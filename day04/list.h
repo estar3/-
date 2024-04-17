@@ -18,6 +18,8 @@ extern void list_init(list_t* list);//初始化
 extern void list_travel(list_t* list);//遍历
 extern void list_deinit(list_t* list);//释放
 extern void list_add(list_t* list, int data);//插入
+extern void list_add_head(list_t* list, int data);//头插入
+extern void list_add_tail(list_t* list, int data);//尾插入
 extern void list_del(list_t* list, int data);//删除
 #endif
 

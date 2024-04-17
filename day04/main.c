@@ -13,6 +13,10 @@ int main(void){
     list_add(&list, 80);
     list_add(&list, 50);
     list_add(&list, 90);
+    list_add_head(&list, 1000);
+    list_add_head(&list, 10000);
+    list_add_tail(&list, 5);
+    list_add_tail(&list, -15);
     //删除结点
     list_del(&list, 30);
     list_travel(&list);

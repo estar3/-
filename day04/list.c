@@ -57,6 +57,38 @@ void list_add(list_t* list, int data){
         }
     }
 }
+//定义头插函数-新的节点插入到头结点和第一个有效节点之间
+void list_add_head(list_t* list, int data){
+    //构造新的结点
+    node_t* pnew = create_node(data);
+    //将新的结点插入到头结点和第一个有效结点之间
+    //head---------->10---->20---->tail
+    //      pnew
+    //head          ptmp    
+    node_t* ptmp = list->head->next;//临时备份原先的第一个结点
+    list->head->next = pnew;
+    pnew->next = ptmp;
+}
+//定义尾插函数 - 新的结点插入到最后一个有效结点和尾结点之间
+void list_add_tail(list_t* list, int data){
+    node_t* pnew = create_node(data);
+    //head------->10---->20---------->tail
+    //                        pnew
+    //                  pfirst        pmid
+    for(node_t* pnode = list->head; pnode != list->tail; pnode = pnode->next){
+        //1.定义三个游标
+        node_t* pfirst = pnode;
+        node_t* pmid = pfirst->next;
+        node_t* plast = pmid->next;
+        if(pmid == list->tail){//让pmid指向尾结点, 此时pfirst指向原先的最后一个结点
+            pfirst->next = pnew;
+            pnew->next = pmid;
+        }
+    } 
+}
+
+
+
 //删除某个结点的函数
 void list_del(list_t* list, int data){
     //head---->10---->20---->30---->tail
